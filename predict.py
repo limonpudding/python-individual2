@@ -7,7 +7,7 @@ for entry in os.listdir("models"):
     file = f"models\\{entry}"
     if os.path.isfile(file):
         print("Модель: " + file)
-        testing = pd.read_json(SignaturesSearcher.searchAllInFolder("test_progs", False))
+        testing = pd.read_json(SignaturesSearcher.searchAllInFolder("control", True))
         model = load(file)
         predicted = model.predict(testing)
         print(predicted)

@@ -55,14 +55,14 @@ def checkFile(filePath):
     addFlag(result, 10, b'\xc7\x45.{0,2}\x00\x00\x00', fileBytes)
 
     # [11] Заполнение элемента случайным числом A[i] = rand()
-    result["f11"] = 1 #addFlag(b'', fileBytes)
+    addFlag(result, 11, b'\x8b\x85.{0,20}\xff\xff\x8b\x8d.{0,20}\xff\xff\x8b\x94\x8d.{0,20}\xff\xff\x89\x94\x85.{0,20}\xff\xff', fileBytes)
 
     # [12] Чтение с консоли cin >> x
     addFlagManySigns(result, 12, [b'\x8d\x45.{1}\x50\x8b\x0d\x9c\x30.{1}\x00\x51\xe8.{1}\xa0\xff\xff\x83\xc4\x08',
                                   b'\x8b\x0d.{3}\x00\xff\x15.{3}\x00\x3b[\xf0-\xff]'], fileBytes)
 
     # [13] Вывод в консоль cout << x
-    result["f13"] = 1 #addFlag(b'', fileBytes)
+    result["f13"] = 0 #addFlag(b'', fileBytes)
 
     # [14] Присваивание элементу массива инта A[i] =x
     addFlagManySigns(result, 14, [b'\x8b\x45\xec\x8b\x4d\x08\x8b\x55\xe0\x89',
